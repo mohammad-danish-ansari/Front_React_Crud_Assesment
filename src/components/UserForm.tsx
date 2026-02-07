@@ -50,7 +50,7 @@ const UserForm: React.FC = () => {
         setLoading(true);
 
         const res = await axios.put<ApiResponse>(
-          `http://localhost:3500/v1/website/user/updateById/${id}`,
+          `https://server-react-crud-assesment.onrender.com/v1/website/user/updateById/${id}`,
           formData,
           {
             headers: {
@@ -65,7 +65,7 @@ const UserForm: React.FC = () => {
       } else {
         setLoading(true);
         const res = await axios.post<ApiResponse>(
-          "http://localhost:3500/v1/website/user/create",
+          "https://server-react-crud-assesment.onrender.com/v1/website/user/create",
           formData,
           {
             headers: {
@@ -98,7 +98,7 @@ const UserForm: React.FC = () => {
       setLoading(true);
 
       const res = await axios.get<{ data: UserForm }>(
-        `http://localhost:3500/v1/website/user/getById/${id}`,
+        `https://server-react-crud-assesment.onrender.com/v1/website/user/getById/${id}`,
         {
           headers: {
             "content-type": "application/json",

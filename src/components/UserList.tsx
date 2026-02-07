@@ -28,7 +28,7 @@ const UserList: React.FC = () => {
     try {
       setLoading(true);
       const res = await axios.get<{ data: User[] }>(
-        `http://localhost:3500/v1/website/user/getAll`,
+        `https://server-react-crud-assesment.onrender.com/v1/website/user/getAll`,
         {
           headers: {
             "content-type": "application/json",
@@ -49,7 +49,7 @@ const UserList: React.FC = () => {
   const deleteData = async (id: string): Promise<void> => {
     try {
       const res = await axios.delete<ApiResponse>(
-        `http://localhost:3500/v1/website/user/deleteById/${id}`,
+        `https://server-react-crud-assesment.onrender.com/v1/website/user/deleteById/${id}`,
         {
           headers: {
             "content-type": "application/json",
