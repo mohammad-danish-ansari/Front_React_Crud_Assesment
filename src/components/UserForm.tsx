@@ -47,7 +47,17 @@ const UserForm: React.FC = () => {
         toast.warning(validation.message);
         return;
       }
+      const phoneRegex = /^[0-9]{10}$/;
+      if (!phoneRegex.test(formData.phone)) {
+        toast.warning("Phone number must be exactly 10 digits");
+        return;
+      }
 
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(formData.email)) {
+        toast.warning("Please enter a valid email address");
+        return;
+      }
       setLoading(true);
 
       let res;
@@ -66,7 +76,7 @@ const UserForm: React.FC = () => {
 
       toast.success(res.data.message);
       navigate("/usersList");
-console.log(res.data.message);
+      console.log(res.data.message);
     } catch (error: any) {
       if (error.response?.data?.message) {
         toast.error(error.response.data.message);
@@ -192,7 +202,6 @@ console.log(res.data.message);
           </div>
         </div>
       )}
-
     </>
   );
 };
