@@ -1,6 +1,6 @@
 import axios from "axios";
-import React, { useCallback, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, {  useEffect, useState } from "react";
+import {  useNavigate } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 import { toast, ToastContainer } from "react-toastify";
 import ExitModel from "./ExitModel/ExitModel";
@@ -23,7 +23,6 @@ const UserList: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [deleteUser, setDeleteUser] = useState(false);
   const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
-
   const getAllUserData = async (): Promise<void> => {
     try {
       setLoading(true);
@@ -162,7 +161,6 @@ const UserList: React.FC = () => {
         </div>
       )}
 
-      <ToastContainer />
     </>
   );
 };

@@ -4,7 +4,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 import { toast, ToastContainer } from "react-toastify";
 import { validateFields } from "../utils/formValidator";
-
 interface UserForm {
   firstName: string;
   lastName: string;
@@ -33,6 +32,7 @@ const UserForm: React.FC = () => {
     message: string;
     data: any;
   }
+
   const submit = async (): Promise<void> => {
     try {
       const requiredFields = [
@@ -41,45 +41,32 @@ const UserForm: React.FC = () => {
         { name: "phone", label: "Phone No" },
         { name: "email", label: "Email" },
       ];
+
       const validation = validateFields(requiredFields, formData);
       if (!validation.isValid) {
         toast.warning(validation.message);
         return;
       }
-      if (id) {
-        setLoading(true);
 
-        const res = await axios.put<ApiResponse>(
+      setLoading(true);
+
+      let res;
+
+      if (id) {
+        res = await axios.put<ApiResponse>(
           `https://server-react-crud-assesment.onrender.com/v1/website/user/updateById/${id}`,
           formData,
-          {
-            headers: {
-              "content-type": "application/json",
-            },
-          },
         );
-  setTimeout(() => {
-        navigate("/userList");
-      }, 1000);
-        toast.success(res.data.message);
       } else {
-        setLoading(true);
-        const res = await axios.post<ApiResponse>(
-          "https://server-react-crud-assesment.onrender.com/v1/website/user/create",
+        res = await axios.post<ApiResponse>(
+          `https://server-react-crud-assesment.onrender.com/v1/website/user/create`,
           formData,
-          {
-            headers: {
-              "content-type": "application/json",
-            },
-          },
         );
-  setTimeout(() => {
-        navigate("/userList");
-      }, 1000);
-        toast.success(res?.data?.message);
       }
 
-    
+      toast.success(res.data.message);
+      navigate("/usersList");
+console.log(res.data.message);
     } catch (error: any) {
       if (error.response?.data?.message) {
         toast.error(error.response.data.message);
@@ -90,7 +77,6 @@ const UserForm: React.FC = () => {
       setLoading(false);
     }
   };
-
   const getById = async (): Promise<void> => {
     if (!id) return;
 
@@ -207,7 +193,6 @@ const UserForm: React.FC = () => {
         </div>
       )}
 
-      <ToastContainer />
     </>
   );
 };

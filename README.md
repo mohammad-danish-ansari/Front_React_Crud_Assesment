@@ -1,3 +1,82 @@
+**Frontend:**: React + Bootstrap
+**Backend:** Node.js + Express
+**Database:** MongoDB
+
+**Live Link:** https://front-react-crud-assesment.onrender.com/usersList
+**BackEnd Link:** https://server-react-crud-assesment.onrender.com
+
+## Features
+
+Full Stack (Frontend + Backend)
+Create and Manage user
+API Integration (Node.js + Express + MongoDB)
+Responsive UI with TailwindCSS
+Modular Folder Structure
+Create New User
+Update Existing User
+Delete User with Confirmation Modal
+View All Users in Table
+Form Validation
+Toast Notifications (Success & Error)
+Loading Spinner
+API Integration (Axios)
+Responsive UI
+Hosted on Render
+
+
+
+### Tech Stack
+
+React + TypeScript
+React Router DOM
+Axios
+React Toastify
+Bootstrap
+React Spinners
+
+### folder structure
+
+frontend # React + Tailwind frontend
+-components # Reusable UI components
+ExitModel.tsx # delete component
+UserForm.tsx # UserForm component
+UserList.tsx # UserList component
+-utils
+formValidator.js # Validation functions for frontend
+-README.md
+
+### website
+
+cd frontend
+npm install
+npm start
+
+### server
+
+cd server
+npm install
+npm run dev
+
+### Installation (Frontend)
+1 Clone the repository
+git remote add origin https://github.com/mohammad-danish-ansari/Front_React_Crud_Assesment/tree/master
+git pull origin master
+
+
+npm install axios react-router-dom react-toastify react-spinners
+npm install --save-dev @types/react-router-dom
+
+
+
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
