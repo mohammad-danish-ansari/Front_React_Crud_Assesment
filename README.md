@@ -2,7 +2,7 @@
 **Backend:** Node.js + Express
 **Database:** MongoDB
 
-**Live Link:** https://front-react-crud-assesment.onrender.com/usersList
+**Live Link:** https://front-react-crud-assesment.onrender.com/
 **BackEnd Link:** https://server-react-crud-assesment.onrender.com
 
 ## Features
