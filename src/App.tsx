@@ -12,10 +12,10 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Navigate to="/usersList" replace />} />
-          <Route path="/usersList" element={<UserList />} />
+          {/* <Route path="/" element={<Navigate to="/" replace />} /> */}
+          <Route path="/" element={<UserList />} />
           <Route path="/usersForm" element={<UserForm />} />
-          <Route path="*" element={<Navigate to="/usersList" replace />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </BrowserRouter>
       <ToastContainer position="top-right" autoClose={3000} />

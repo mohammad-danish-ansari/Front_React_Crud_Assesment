@@ -1,6 +1,6 @@
 import axios from "axios";
-import React, {  useEffect, useState } from "react";
-import {  useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 import { toast, ToastContainer } from "react-toastify";
 import ExitModel from "./ExitModel/ExitModel";
@@ -36,11 +36,9 @@ const UserList: React.FC = () => {
       );
 
       setUser(res.data.data);
-      
     } catch (error) {
       toast.error("Something went wrong");
-     
-    }finally {
+    } finally {
       setLoading(false);
     }
   };
@@ -92,7 +90,7 @@ const UserList: React.FC = () => {
           <ClipLoader color="#123abc" loading={loading} size={50} />
         </div>
       ) : (
-        <div className="card m-4">
+        <div className="card m-4 y-auto w-100">
           <div className="contact d-flex justify-content-between p-2">
             <h2 className="text-">User List</h2>
             <button
@@ -114,53 +112,86 @@ const UserList: React.FC = () => {
                   Add User
                 </button>
               </div>
-
-              <table>
-                <thead>
-                  <tr className="text-center text-500">
-                    <th>Sr No</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  {user.map((x, index) => (
-                    <tr className="text-center" key={x._id}>
-                      <td>{index + 1}</td>
-                      <td>
-                        {x.firstName} {x.lastName}
-                      </td>
-                      <td>{x.email}</td>
-                      <td>{x.phone}</td>
-                      <td>
-                        <button
-                          className="btn btn-sm btn-outline-warning mx-2"
-                          onClick={() => navigate(`/usersForm?id=${x._id}`)}
-                        >
-                          Edit
-                        </button>
-                        <button
-                          className="btn btn-sm btn-outline-danger"
-                          onClick={() => {
-                            setSelectedUserId(x._id);
-                            setDeleteUser(true);
-                          }}
-                        >
-                          Delete
-                        </button>
-                      </td>
+              <div className="table-responsive">
+                <table className="user-table">
+                  <thead>
+                    <tr className="text-center text-500">
+                      <th>Sr No</th>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Phone</th>
+                      <th>Action</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+
+                  <tbody>
+                    {user.map((x, index) => (
+                      <tr className="text-center" key={x._id}>
+                        <td>{index + 1}</td>
+                        <td>
+                          {x.firstName} {x.lastName}
+                        </td>
+                        <td>{x.email}</td>
+                        <td>{x.phone}</td>
+                        <td>
+                          <button
+                            className="btn btn-sm btn-outline-warning mx-2"
+                            onClick={() => navigate(`/usersForm?id=${x._id}`)}
+                          >
+                            Edit
+                          </button>
+                          <button
+                            className="btn btn-sm btn-outline-danger"
+                            onClick={() => {
+                              setSelectedUserId(x._id);
+                              setDeleteUser(true);
+                            }}
+                          >
+                            Delete
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
       )}
+      <style>{`
+  .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+  }
 
+  .user-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+  }
+
+  .user-table th,
+  .user-table td {
+    padding: 8px;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 669px) {
+    .card {
+      margin: 10px !important;
+    }
+
+    .user-table {
+      font-size: 12px;
+    }
+
+    .btn-sm {
+      padding: 4px 6px;
+      font-size: 11px;
+    }
+  }
+`}</style>
     </>
   );
 };

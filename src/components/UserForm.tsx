@@ -75,7 +75,7 @@ const UserForm: React.FC = () => {
       }
 
       toast.success(res.data.message);
-      navigate("/usersList");
+      navigate("/");
       console.log(res.data.message);
     } catch (error: any) {
       if (error.response?.data?.message) {
@@ -130,7 +130,7 @@ const UserForm: React.FC = () => {
                 <h2>{id ? "Update" : "Add"} User</h2>
                 <button
                   className="btn btn-primary border-white"
-                  onClick={() => navigate("/usersList")}
+                  onClick={() => navigate("/")}
                 >
                   BACK
                 </button>
