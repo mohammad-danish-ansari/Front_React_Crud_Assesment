@@ -90,7 +90,7 @@ const UserList: React.FC = () => {
           <ClipLoader color="#123abc" loading={loading} size={50} />
         </div>
       ) : (
-        <div className="card m-4 y-auto w-100">
+        <div className="card m-4 y-auto">
           <div className="contact d-flex justify-content-between p-2">
             <h2 className="text-">User List</h2>
             <button
